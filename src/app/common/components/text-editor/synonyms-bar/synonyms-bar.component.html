@@ -1,0 +1,4 @@
+<div class="synonym-header">
+  Synonym for: {{selectedText$ | async}}
+</div>
+<button *ngFor="let word of synonymsSuggestions$ | async;" (click)="selectSynonym(word)">{{ word }}</button>

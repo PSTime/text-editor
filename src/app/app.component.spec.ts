@@ -1,22 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { HeaderComponent } from './header/header.component';
-import { FileComponent } from './file/file.component';
 import { FooterComponent } from './footer/footer.component';
-import { TextService } from './text-service/text.service';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        ControlPanelComponent,
         HeaderComponent,
         FooterComponent,
-        FileComponent
       ],
-      providers: [TextService]
+      providers: [],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
