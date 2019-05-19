@@ -28,7 +28,7 @@ export class TextEditorService {
 
     return tagNames
       .map((tag: string) => this.convertHtmlTagToCommandType(tag))
-      .filter((command: CommandTypes|null) => !!command);
+      .filter((command: CommandTypes|null): command is CommandTypes => !!command);
   }
 
   private convertHtmlTagToCommandType(tag: string): CommandTypes|null {

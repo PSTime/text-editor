@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {iif, Observable, of, Subject} from 'rxjs';
-import {concatMap, debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
+import {concatMap, debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 import {SynonymsService} from '../services/synonyms.service';
 
 @Component({
@@ -37,19 +37,14 @@ export class SynonymsBarComponent implements OnInit {
   private setSynonymSubscription() {
     this.synonymsSuggestions$ = this.selectedText$.asObservable().pipe(
       debounceTime(500),
-      tap(console.log),
       distinctUntilChanged(),
-      tap(console.log),
       switchMap((word: string) => iif(
         () => (word.length > 0 && word.length < 50),
         of(word).pipe(
-          tap(() => console.log('service')),
           concatMap((text) => this.synonymsService.getSynonyms(text)),
           map((words) => words.map((oneWord) => oneWord.word))
         ),
-        of([]).pipe(
-          tap(() => console.log('of'))
-        )
+        of([])
       ))
     );
   }

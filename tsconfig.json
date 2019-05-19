@@ -21,7 +21,7 @@
       "node",
       "dom-inputevent"
     ],
-    "strict": false,
+    "strict": true,
     "strictPropertyInitialization": false
   }
 }
