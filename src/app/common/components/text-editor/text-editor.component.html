@@ -1,0 +1,12 @@
+<div class="text-editor-container">
+  <app-commands-bar (execute)="commandExecute($event)" [selectedCommands]="selectedCommands"></app-commands-bar>
+  <div
+    class="text-area"
+    contenteditable="true"
+    (input)="input($event)"
+    (blur)="blur()"
+    #textArea
+    [innerHtml]="value">
+  </div>
+  <app-synonyms-bar [selectedText]="textSelected$ | async" (synonymSelected)="setSynonym($event)"></app-synonyms-bar>
+</div>

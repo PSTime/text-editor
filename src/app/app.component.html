@@ -1,8 +1,11 @@
 <app-header [title]="title"></app-header>
 
 <main>
-  <app-control-panel></app-control-panel>
-  <app-file></app-file>
+  <app-text-editor [formControl]="control"></app-text-editor>
 </main>
+
+<pre>
+  {{control.value}}
+</pre>
 
 <app-footer></app-footer>
